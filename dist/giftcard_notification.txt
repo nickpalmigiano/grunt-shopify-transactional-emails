@@ -1,0 +1,30 @@
+{{ shop.name }} ( {{
+shop.url }} )
+
+*****************************************************************
+Hi{% if gift_card.customer %} {{ gift_card.customer.first_name
+}}{% endif %},
+*****************************************************************
+
+-----------------------------------------------------------------
+Here is your {{ shop.name }} ( {{ shop.url }} ) gift card for {{
+gift_card.initial_value | money_without_trailing_zeros }}.
+-----------------------------------------------------------------
+
+{% if gift_card.initial_value != gift_card.balance %}
+
+You have {{ gift_card.balance |
+money_without_trailing_zeros }} left on this gift card.
+
+{% endif %}
+
+View or print your gift card ( {{ gift_card.url }} )
+
+Purchased this gift card for someone else? Feel free to
+forward them this email.
+
+Thank you for shopping at {{ shop.name }} ( {{ shop.url
+}} )!
+
+© {{ 'now' | date: "%Y"
+}} {{ shop.name }} All Rights Reserved

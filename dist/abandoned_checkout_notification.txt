@@ -1,0 +1,31 @@
+{{ shop.name }} ( {{
+shop.url }} )
+
+*****************************************************************
+Hey{% if billing_address.name %} {{ billing_address.name }}{%
+endif %},
+*****************************************************************
+
+-----------------------------------------------------------------
+Your shopping cart at {{ shop_name }} has been reserved and is
+waiting for your return!
+-----------------------------------------------------------------
+
+In your cart, you left:
+
+{% for line in line_items %}
+
+{{ line.title }}
+x {{ line.quantity }}
+
+{% endfor %}
+
+But it's not too late! To complete your purchase, click
+this link:
+
+Complete Your Purchase ( {{ url }} )
+
+Thanks for shopping!
+
+© {{ 'now' | date: "%Y"
+}} {{ shop.name }} All Rights Reserved

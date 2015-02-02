@@ -1,0 +1,84 @@
+{{ shop.name }} ( {{
+shop.url }} )
+
+{% if billing_address.name %}
+
+********************************
+Dear {{ billing_address.name }},
+********************************
+
+{% endif %}
+
+-----------------------------------------------------------------
+{% if fulfillment.item_count == item_count %}All{% elsif
+fulfillment_status == 'fulfilled' %}The last{% else %}Some{%
+endif %} of the items from order {{ name }} have now been
+shipped:
+-----------------------------------------------------------------
+
+{% for line in
+fulfillment.fulfillment_line_items %}
+
+{{ line.line_item.title }}
+x {{ line.quantity }}
+
+{% endfor %}
+
+{% if requires_shipping %}
+
+They are being shipped {% if
+fulfillment.tracking_company %}via {{
+fulfillment.tracking_company }} {% endif %}to the following
+address:
+
+{{ shipping_address.name }}
+{{ shipping_address.street }}
+{{ shipping_address.city }}
+{{ shipping_address.province }}
+{{ shipping_address.zip }}
+{{ shipping_address.country }}
+
+{% if fulfillment.tracking_numbers.size > 0 %}
+{% if fulfillment.tracking_numbers.size == 1 %}
+
+The tracking number for these items is {{
+fulfillment.tracking_numbers.first }}.
+
+Check the status of your shipment ( {{
+fulfillment.tracking_urls.first }} )
+
+{% else %}
+
+The tracking details for these items are as
+follows:
+
+{% for tracking_number in
+fulfillment.tracking_numbers %} {{ tracking_number }}{% endfor %}
+
+Click the links below for shipping status on
+these items:
+
+{% for tracking_url in
+fulfillment.tracking_urls %} {{ tracking_url }} ( {{ tracking_url
+}} ){% endfor %}
+
+{% endif %}
+
+Please allow some time for the status of the
+shipment to correctly display at the above address.
+
+{% endif %}
+
+{% endif %}
+
+{% if fulfillment_status != 'fulfilled' %}
+
+You will receive a confirmation email when more items
+from your order have been shipped.
+
+{% endif %}
+
+Thank you for ordering from {{ shop_name }}!
+
+© {{ 'now' | date: "%Y"
+}} {{ shop.name }} All Rights Reserved

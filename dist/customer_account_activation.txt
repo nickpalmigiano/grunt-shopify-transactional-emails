@@ -1,0 +1,22 @@
+{{ shop.name }} ( {{
+shop.url }} )
+
+{% if customer.name %}
+
+*************************
+Dear {{ customer.name }},
+*************************
+
+{% endif %}
+
+-----------------------------------------------------------------
+This is to confirm that your account for the shop {{ shop.name }}
+is now active.
+-----------------------------------------------------------------
+
+The next time you shop at {{ shop.name }}, you can save
+time at checkout by logging into your account. This will prefill
+your address information at the checkout.
+
+© {{ 'now' | date: "%Y"
+}} {{ shop.name }} All Rights Reserved

@@ -1,0 +1,26 @@
+{{ shop.name }} ( {{
+shop.url }} )
+
+{% if billing_address.name %}
+
+********************************
+Dear {{ billing_address.name }},
+********************************
+
+{% endif %}
+
+Your order {{ name }} was cancelled {% case cancel_reason
+%}{% when 'customer' %}at your request.{% when 'inventory'
+%}because we did not have enough stock to fulfill your order.{%
+when 'fraud' %}because we suspect it is fraudulent.{% when
+'other' %}due to unforseen circumstances.{% endcase %}
+
+{% if financial_status == 'voided' %}Your payment has
+been voided.{% elsif financial_status == 'credited' %}Your
+payment has been refunded.{% endif %}
+
+Please reply to this email if you have any questions or
+concerns.
+
+© {{ 'now' | date: "%Y"
+}} {{ shop.name }} All Rights Reserved

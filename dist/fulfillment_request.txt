@@ -1,0 +1,80 @@
+{{ shop.name }} ( {{
+shop.url }} )
+
+*******************
+{{ service_name }},
+*******************
+
+Please fulfill order {{ name }}.
+
+Total number of items: {{ fulfillment.item_count }}
+
+Unique items: {{
+fulfillment.fulfillment_line_items.size }}
+
+Items to fulfill:
+-----------------
+
+{% for line in
+fulfillment.fulfillment_line_items %}
+
+Title: {{
+line.line_item.title }}
+SKU: {{ line.line_item.sku }}
+{% if line.line_item.vendor
+!= blank %} Vendor: {{ line.line_item.vendor }} {% endif %}
+{% if line.line_item.grams !=
+blank %}Grams: {{ line.line_item.grams }} {% endif %}
+
+x {{ line.quantity }}
+
+{% endfor %}
+
+{% if shipping_address %}
+
+Shipping Address:
+-----------------
+
+{{ shipping_address.name }}
+
+{% if shipping_address.company %}{{
+shipping_address.company }}
+
+{% endif %}
+{{ shipping_address.address1 }}
+
+{{ shipping_address.address2 }}
+
+{{ shipping_address.city }}, {{
+shipping_address.province }}
+
+{{ shipping_address.zip }}
+
+{{ shipping_address.country }}
+
+{% if shipping_address.phone %}Phone: {{
+shipping_address.phone }}
+
+{% endif %}
+
+{% endif %}
+
+Shipping Method:
+----------------
+
+{% if shipping_method %}{{ shipping_method.title }}{%
+else %}None{% endif %}
+
+Tracking Number:
+----------------
+
+{% if fulfillment.tracking_number %}{{
+fulfillment.tracking_number }}{% else %}None{% endif %}
+
+Customer Email:
+---------------
+
+{{ email }}
+
+© {{ 'now' | date: "%Y"
+}} {{ shop.name }} All Rights Reserved

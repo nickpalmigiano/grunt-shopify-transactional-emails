@@ -1,0 +1,29 @@
+{{ shop.name }} ( {{
+shop.url }} )
+
+{% if customer.name %}
+
+*************************
+Dear {{ customer.name }},
+*************************
+
+{% endif %}
+
+{{ shop_name }} has refunded your order ({{ name }}){% if
+amount > 0 %} a total of {{ amount | money_with_currency }}{%
+endif %}{% if refund_line_items.size > 0 %} for:{% else %}.{%
+endif %}
+
+{% for line in refund_line_items %}
+
+{{ line.line_item.title }}
+x {{ line.quantity }}
+
+{% endfor %}
+
+The next time you shop at {{ shop.name }}, you can save
+time at checkout by logging into your account. This will prefill
+your address information at the checkout.
+
+© {{ 'now' | date: "%Y"
+}} {{ shop.name }} All Rights Reserved
