@@ -1,5 +1,5 @@
 # Grunt Shopify Transactional Emails
-Prebuilt template workflow for generating styled HTML emails for all of Shopify's transactional emails. 
+Grunt workflow for generating Shopify transactional emails.
 
 This repo was forked from [leemunroe/grunt-email-design](https://github.com/leemunroe/grunt-email-design)
 
