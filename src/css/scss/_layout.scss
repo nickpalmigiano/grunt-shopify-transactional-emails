@@ -1,0 +1,169 @@
+/* -------------------------------------
+    BODY, CONTAINER & MAIN
+------------------------------------- */
+body{
+  background-color: $grey;
+}
+
+.body {
+  background-color: $grey;
+  width: 100%;
+}
+
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+.container {
+  display: block !important;
+  margin: 0 auto !important; /* makes it centered */
+  max-width: $width;
+  width: auto;
+  clear: both !important;
+}
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+  max-width: $width;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+}
+
+/* moved main into the layout section since we want to have the header and footer outside of the body area for styling */
+.main {
+  width:100%;
+  margin: 0 auto;
+}
+
+
+
+/* -------------------------------------
+    HEADER, FOOTER
+------------------------------------- */
+
+
+
+.header-wrap {
+  padding:0;
+  background-color:$header-bg-color;
+}
+
+.logo-link {
+  text-align:center;
+
+  img {
+    display:block;
+    margin:0 auto;
+  }
+}
+
+.content-wrap {
+  padding:$padding;
+  background:#fff;
+  border: 1px solid darken($grey,5);
+  border-radius:$br;
+}
+
+// Adds padding to content - use this instead of paragraphs for consistent padding/margin rendering
+.content-block{
+  padding:0 0 $padding;
+}
+
+.social-wrap {
+  text-align:right;
+  padding-right:$padding;
+}
+
+.footer-wrap {
+  padding:$paddingSmall 0;
+  text-transform:uppercase;
+}
+
+.footer {
+  width: 100%;
+  clear: both;
+  *{
+    color: #999;
+    font-size:12px;
+  }
+  td{
+    padding:20px 0;
+  }
+}
+
+
+
+
+
+/* -------------------------------------
+    INVOICE
+    Styles for the billing table
+------------------------------------- */
+
+.invoice {
+  margin: 20px auto;
+  text-align: left;
+  width: 80%;
+}
+.invoice td {
+  padding: 5px 0;
+}
+.invoice .invoice-items {
+  width: 100%;
+  border-top: #eee 1px solid;
+}
+.invoice .invoice-items td {
+  border-bottom: #eee 1px solid;
+}
+.invoice .invoice-items .total td {
+  border:none;
+}
+.invoice .invoice-items .total > td {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  font-weight: 700;
+}
+
+
+
+/* -------------------------------------
+    FULLFILLMENT
+    Styles for the fullfillment table
+------------------------------------- */
+
+.fullfillment {
+  width:100%;
+  margin:20px auto;
+}
+
+
+
+
+
+/* -------------------------------------
+    ALERTS
+    Change the class depending on
+    warning, good or bad email
+------------------------------------- */
+
+.alert {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  padding: 20px;
+  text-align: center;
+  border-radius: 3px 3px 0 0;
+}
+.alert a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+.alert.alert-warning {
+  background-color: #FF9F00;
+}
+.alert.alert-bad {
+  background-color: #D0021B;
+}
+.alert.alert-good {
+  background-color: #68B90F;
+}

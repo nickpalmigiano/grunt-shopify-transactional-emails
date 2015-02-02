@@ -1,0 +1,72 @@
+---
+layout: branded.hbs
+subject: New Order Notification
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="content-block"><h1>Hello \{{ shop_name }},</h1></td>
+    </tr>
+    <tr>
+        <td class="content-block">{% if customer.name %}\{{ customer.name }}{% else %}Someone{% endif %} placed a new order with you today, \{{ date | date: "%b %d %I:%M%p" }}:</td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <table class="invoice">
+                <tr>
+                    <td>
+                        <table class="invoice-items" cellpadding="0" cellspacing="0">
+                            {% for line in line_items %}
+                            <tr>
+                                <td><img src="\{{ line | img_url: 'thumb' }}" /></td>
+                                <td>\{{ line.title }}</td>
+                                <td>x \{{ line.quantity }}</td>
+                                <td class="alignright">\{{ line.price | money }} each</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block"><a href="\{{ shop.url }}/admin/orders/\{{ id }}">View order \{{order_name}}</a></td>
+    </tr>
+    {% if fulfillment_aborted %}
+        <tr>
+            <td class="content-block"><strong>The above order was not automatically fulfilled because it was flagged as suspicious.</strong></td>
+        </tr>
+    {% endif %}
+    {% if has_high_risks? %}
+    <tr>
+        <td class="content-block">
+            <h3>Security check:</h3>
+            This order has a risk of being fraudulent. Review the order in your store's admin and contact the customer to verify their information.
+        </td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td class="content-block">
+            <h3>Payment processing method:</h3>
+            \{{ gateway }}
+        </td>
+    </tr>
+    {% if requires_shipping and shipping_address %}
+    <tr>
+        <td class="content-block">
+            <h3>Delivery method:</h3>
+            {% for shipping_method in shipping_methods %}\{{ shipping_method.title }}<br/>{% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <h3>Shipping address:</h3>
+            <p>\{{ shipping_address.name }}</p>
+            <p>\{{ shipping_address.street }}</p>
+            <p>\{{ shipping_address.city }}, \{{ shipping_address.province }}  \{{ shipping_address.zip }}</p>
+            <p>\{{ shipping_address.country }}</p>
+            <p>\{{ shipping_address.phone }}</p>
+        </td>
+    </tr>
+    {% endif %}
+</table>

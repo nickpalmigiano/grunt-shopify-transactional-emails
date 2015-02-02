@@ -1,0 +1,33 @@
+/* -------------------------------------
+    OTHER STYLES THAT MIGHT BE USEFUL
+------------------------------------- */
+.last {
+  margin-bottom: 0;
+}
+
+.first {
+  margin-top: 0;
+}
+
+.aligncenter{
+  text-align:center;
+}
+
+.alignright{
+  text-align:right;
+}
+
+.clear{
+  clear:both;
+}
+
+// Preheader text is displayed in certain clients as a preview but not shown when the user opens the email
+.preheader{
+  display:none !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  mso-hide: all;
+}

@@ -1,0 +1,23 @@
+---
+layout: branded.hbs
+subject: Customer Account Welcome
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    {% if customer.name %}
+    <tr>
+        <td class="content-block"><h1>Dear \{{ customer.name }},</h1></td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td class="content-block"><h2>An account has been created for you at \{{ shop.name }}.</h2></td>
+    </tr>
+    <tr>
+        <td class="content-block">Please visit this url to activate your account and set your password.</td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter"><a href="\{{ customer.account_activation_url }}" class="btn-primary">Active Your Account</a></td>
+    </tr>
+    <tr>
+        <td class="content-block">If the account was created in error, you can visit the link above and select "Decline" to decline this invitation.</td>
+    </tr>
+</table>

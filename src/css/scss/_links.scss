@@ -1,0 +1,44 @@
+/* -------------------------------------
+    LINKS & BUTTONS
+------------------------------------- */
+a {
+  color: $secondary-color;
+  text-decoration: underline;
+
+  &:hover {
+    color:darken($secondary-color,20%);
+    border-color:darken($secondary-color,20%);
+  }
+}
+
+.btn-primary {
+  text-decoration: none;
+  color: $secondary-color;
+  border:2px solid $secondary-color;
+  line-height: 2;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  padding:14px 28px;
+  text-transform: uppercase;
+
+  &:hover {
+    color:darken($secondary-color,20%);
+    border-color:darken($secondary-color,20%);
+  }
+}
+
+.social-icon {
+  margin:0 15px;
+}
+
+.social-icon--last {
+  margin-right:0;
+}
+
+.social-icon img {
+  height:20px;
+  width:20px;
+}

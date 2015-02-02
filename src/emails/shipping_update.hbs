@@ -1,0 +1,43 @@
+---
+layout: branded.hbs
+subject: Shipping Update
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        {% if billing_address.name %}
+        <td class="content-block"><h1>Dear \{{ billing_address.name }},</h1></td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td class="content-block">
+            <h2>The following shipped items from order \{{ name }} have been updated with new shipping information:</h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <table class="invoice">
+                <tr>
+                    <td>
+                        <table class="invoice-items" cellpadding="0" cellspacing="0">
+                            {% for line in fulfillment.fulfillment_line_items %}
+                            <tr>
+                                <td><img src="\{{ line | img_url: 'thumb' }}" /> \{{ line.line_item.title }}</td>
+                                <td class="alignright">x \{{ line.quantity }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">They are being shipped{% if fulfillment.tracking_company %} via \{{ fulfillment.tracking_company }}{% endif %} with tracking number \{{ fulfillment.tracking_number }}.</td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter"><a href="\{{ fulfillment.tracking_url }}" class="btn-primary">Check the status of this shipment</a></td>
+    </tr>
+    <tr>
+        <td class="content-block">Please allow some time for the status of the shipment to correctly display at the above address.</td>
+    </tr>
+</table>

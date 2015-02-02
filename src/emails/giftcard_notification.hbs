@@ -1,0 +1,26 @@
+---
+layout: branded.hbs
+subject: Gift Card Notification
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="content-block"><h1>Hi{% if gift_card.customer %} \{{ gift_card.customer.first_name }}{% endif %},</h1></td>
+    </tr>
+    <tr>
+        <td class="content-block"><h2>Here is your <a href="\{{ shop.url }}">\{{ shop.name }}</a> gift card for \{{ gift_card.initial_value | money_without_trailing_zeros }}.</h2></td>
+    </tr>
+    {% if gift_card.initial_value != gift_card.balance %}
+    <tr>
+        <td class="content-block">You have \{{ gift_card.balance | money_without_trailing_zeros }} left on this gift card.</td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td class="content-block aligncenter"><a href="\{{ gift_card.url }}" class="btn-primary">View or print your gift card</a></td>
+    </tr>
+    <tr>
+        <td class="content-block">Purchased this gift card for someone else? Feel free to forward them this email.</td>
+    </tr>
+    <tr>
+        <td class="content-block">Thank you for shopping at <a href="\{{ shop.url }}">\{{ shop.name }}</a>!</td>
+    </tr>
+</table>

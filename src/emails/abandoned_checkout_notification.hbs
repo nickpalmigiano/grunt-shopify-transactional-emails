@@ -1,0 +1,44 @@
+---
+layout: branded.hbs
+subject: Complete Your Purchase
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="content-block">
+            <h1>Hey{% if billing_address.name %} \{{ billing_address.name }}{% endif %},</h1>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block"><h2>Your shopping cart at \{{ shop_name }} has been reserved and is waiting for your return!</h2></td>
+    </tr>
+    <tr>
+        <td class="content-block">In your cart, you left:</td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <table class="invoice">
+                <tr>
+                    <td>
+                        <table class="invoice-items" cellpadding="0" cellspacing="0">
+                            {% for line in line_items %}
+                            <tr>
+                                <td>\{{ line.title }}</td>
+                                <td class="alignright">x \{{ line.quantity }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">But it's not too late! To complete your purchase, click this link:</td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter"><a href="\{{ url }}" class="btn-primary">Complete Your Purchase</a></td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter">Thanks for shopping!</td>
+    </tr>
+</table>

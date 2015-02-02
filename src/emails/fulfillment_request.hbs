@@ -1,0 +1,76 @@
+---
+layout: branded.hbs
+subject: Fulfillment Request
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="content-block"><h1>\{{ service_name }},</h1></td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <p>Please fulfill order \{{ name }}.</p>
+            <p>Total number of items: \{{ fulfillment.item_count }}</p>
+            <p>Unique items: \{{ fulfillment.fulfillment_line_items.size }}</p>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <h3>Items to fulfill:</h3>
+            <table class="invoice fullfillment">
+                <tr>
+                    <td>
+                        <table class="invoice-items" cellpadding="0" cellspacing="0">
+                            {% for line in fulfillment.fulfillment_line_items %}
+                            <tr>
+                                <td>
+                                    Title: \{{ line.line_item.title }}<br/>
+                                    SKU: \{{ line.line_item.sku }}<br/>
+                                    {% if line.line_item.vendor != blank %} Vendor: \{{ line.line_item.vendor }}<br/> {% endif %}
+                                    {% if line.line_item.grams != blank %}Grams: \{{ line.line_item.grams }} {% endif %}
+                                </td>
+                                <td class="alignright">
+                                    x \{{ line.quantity }}
+                                </td>
+                             </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    {% if shipping_address %}
+    <tr>
+        <td class="content-block">
+            <h3>Shipping Address:</h3>
+            <br/>
+            <p>\{{ shipping_address.name }}</p>
+            {% if shipping_address.company %}<p>\{{ shipping_address.company }}</p>{% endif %}
+            <p>\{{ shipping_address.address1 }}</p>
+            <p>\{{ shipping_address.address2 }}</p>
+            <p>\{{ shipping_address.city }}, \{{ shipping_address.province }}</p>
+            <p>\{{ shipping_address.zip }}</p>
+            <p>\{{ shipping_address.country }}</p>
+            {% if shipping_address.phone %}<p>Phone: \{{ shipping_address.phone }}</p>{% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td class="content-block">
+            <h4>Shipping Method:</h4>
+            {% if shipping_method %}\{{ shipping_method.title }}{% else %}None{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <h4>Tracking Number:</h4>
+            {% if fulfillment.tracking_number %}\{{ fulfillment.tracking_number }}{% else %}None{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <h4>Customer Email:</h4>
+            \{{ email }}
+        </td>
+    </tr>
+</table>

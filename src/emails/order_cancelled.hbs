@@ -1,0 +1,20 @@
+---
+layout: branded.hbs
+subject: Customer Account Activation
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    {% if billing_address.name %}
+    <tr>
+        <td class="content-block"><h1>Dear \{{ billing_address.name }},</h1></td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td class="content-block">Your order \{{ name }} was cancelled {% case cancel_reason %}{% when 'customer' %}at your request.{% when 'inventory' %}because we did not have enough stock to fulfill your order.{% when 'fraud' %}because we suspect it is fraudulent.{% when 'other' %}due to unforseen circumstances.{% endcase %}</td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter"><strong>{% if financial_status == 'voided' %}Your payment has been voided.{% elsif financial_status == 'credited' %}Your payment has been refunded.{% endif %}</strong></td>
+    </tr>
+    <tr>
+        <td class="content-block">Please reply to this email if you have any questions or concerns.</td>
+    </tr>
+</table>

@@ -1,0 +1,349 @@
+@import url(http://fonts.googleapis.com/css?family=Noto+Serif:700|Ubuntu);
+/* -------------------------------------
+    CONFIGURE YOUR VARIABLES
+------------------------------------- */
+/* -------------------------------------
+    GLOBAL
+------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+  width: 100% !important;
+  height: 100%;
+  line-height: 1.6;
+}
+
+/* Let's make sure all tables have defaults */
+table {
+  -premailer-cellspacing: 0;
+  -premailer-cellpadding: 0;
+  -premailer-width: 100%;
+}
+table td {
+  vertical-align: top;
+}
+
+/* -------------------------------------
+    BODY, CONTAINER & MAIN
+------------------------------------- */
+body {
+  background-color: #f6f6f6;
+}
+
+.body {
+  background-color: #f6f6f6;
+  width: 100%;
+}
+
+/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+.container {
+  display: block !important;
+  margin: 0 auto !important;
+  /* makes it centered */
+  max-width: 600px;
+  width: auto;
+  clear: both !important;
+}
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+}
+
+/* moved main into the layout section since we want to have the header and footer outside of the body area for styling */
+.main {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* -------------------------------------
+    HEADER, FOOTER
+------------------------------------- */
+.header-wrap {
+  padding: 0;
+  background-color: #53545b;
+}
+
+.logo-link {
+  text-align: center;
+}
+.logo-link img {
+  display: block;
+  margin: 0 auto;
+}
+
+.content-wrap {
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 0;
+}
+
+.content-block {
+  padding: 0 0 30px;
+}
+
+.social-wrap {
+  text-align: right;
+  padding-right: 30px;
+}
+
+.footer-wrap {
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+
+.footer {
+  width: 100%;
+  clear: both;
+}
+.footer * {
+  color: #999;
+  font-size: 12px;
+}
+.footer td {
+  padding: 20px 0;
+}
+
+/* -------------------------------------
+    INVOICE
+    Styles for the billing table
+------------------------------------- */
+.invoice {
+  margin: 20px auto;
+  text-align: left;
+  width: 80%;
+}
+
+.invoice td {
+  padding: 5px 0;
+}
+
+.invoice .invoice-items {
+  width: 100%;
+  border-top: #eee 1px solid;
+}
+
+.invoice .invoice-items td {
+  border-bottom: #eee 1px solid;
+}
+
+.invoice .invoice-items .total td {
+  border: none;
+}
+
+.invoice .invoice-items .total > td {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  font-weight: 700;
+}
+
+/* -------------------------------------
+    FULLFILLMENT
+    Styles for the fullfillment table
+------------------------------------- */
+.fullfillment {
+  width: 100%;
+  margin: 20px auto;
+}
+
+/* -------------------------------------
+    ALERTS
+    Change the class depending on
+    warning, good or bad email
+------------------------------------- */
+.alert {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  padding: 20px;
+  text-align: center;
+  border-radius: 3px 3px 0 0;
+}
+
+.alert a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.alert.alert-warning {
+  background-color: #FF9F00;
+}
+
+.alert.alert-bad {
+  background-color: #D0021B;
+}
+
+.alert.alert-good {
+  background-color: #68B90F;
+}
+
+/* -------------------------------------
+    TYPOGRAPHY
+------------------------------------- */
+h1, h2, h3 {
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+  color: #ea662a;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 700;
+}
+h1 a, h2 a, h3 a {
+  font-size: inherit;
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+p, ul, ol {
+  margin: 0;
+  font-weight: normal;
+}
+p li, ul li, ol li {
+  margin-left: 5px;
+  list-style-position: inside;
+}
+
+.copyright {
+  font-size: 11px;
+  color: #677a90;
+  line-height: 20px;
+}
+
+/* -------------------------------------
+    LINKS & BUTTONS
+------------------------------------- */
+a {
+  color: #28825f;
+  text-decoration: underline;
+}
+a:hover {
+  color: #103426;
+  border-color: #103426;
+}
+
+.btn-primary {
+  text-decoration: none;
+  color: #28825f;
+  border: 2px solid #28825f;
+  line-height: 2;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  padding: 14px 28px;
+  text-transform: uppercase;
+}
+.btn-primary:hover {
+  color: #103426;
+  border-color: #103426;
+}
+
+.social-icon {
+  margin: 0 15px;
+}
+
+.social-icon--last {
+  margin-right: 0;
+}
+
+.social-icon img {
+  height: 20px;
+  width: 20px;
+}
+
+/* -------------------------------------
+    OTHER STYLES THAT MIGHT BE USEFUL
+------------------------------------- */
+.last {
+  margin-bottom: 0;
+}
+
+.first {
+  margin-top: 0;
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+.alignright {
+  text-align: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.preheader {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  mso-hide: all;
+}
+
+/* -------------------------------------
+    RESPONSIVE AND MOBILE FRIENDLY STYLES
+------------------------------------- */
+@media only screen and (max-width: 640px) {
+  h1, h2, h3, h4 {
+    font-weight: 600 !important;
+  }
+
+  h1 {
+    font-size: 22px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  h3 {
+    font-size: 16px !important;
+  }
+
+  .content {
+    padding: 0 !important;
+  }
+
+  .content-wrap {
+    padding: 20px 10px !important;
+  }
+}

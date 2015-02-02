@@ -1,0 +1,87 @@
+---
+layout: branded.hbs
+subject: Shipping Confirmation
+---
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+    {% if billing_address.name %}
+        <td class="content-block"><h1>Dear \{{ billing_address.name }},</h1></td>
+    {% endif %}
+    </tr>
+    <tr>
+        <td class="content-block">
+        <h2>{% if fulfillment.item_count == item_count %}All{% elsif fulfillment_status == 'fulfilled' %}The last{% else %}Some{% endif %} of the items from order \{{ name }} have now been shipped:</h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block">
+            <table class="invoice">
+                <tr>
+                    <td>
+                        <table class="invoice-items" cellpadding="0" cellspacing="0">
+                            {% for line in fulfillment.fulfillment_line_items %}
+                            <tr>
+                                <td><img src="\{{ line | img_url: 'thumb' }}" /> \{{ line.line_item.title }}</td>
+                                <td class="alignright">x \{{ line.quantity }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    {% if requires_shipping %}
+        <tr>
+            <td class="content-block">
+                They are being shipped {% if fulfillment.tracking_company %}via \{{ fulfillment.tracking_company }} {% endif %}to the following address:
+            </td>
+        </tr>
+        <tr>
+            <td class="content-block">
+                \{{ shipping_address.name }}<br />
+                \{{ shipping_address.street }}<br />
+                \{{ shipping_address.city }}<br />
+                \{{ shipping_address.province }}
+                \{{ shipping_address.zip }}<br />
+                \{{ shipping_address.country }}
+            </td>
+        </tr>
+        {% if fulfillment.tracking_numbers.size > 0 %}
+            {% if fulfillment.tracking_numbers.size == 1 %}
+            <tr>
+                <td class="content-block">The tracking number for these items is \{{ fulfillment.tracking_numbers.first }}.</td>
+            </tr>
+            <tr>
+                <td class="content-block aligncenter"><a href="\{{ fulfillment.tracking_urls.first }}" class="btn-primary">Check the status of your shipment</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td class="content-block">
+                    <p>The tracking details for these items are as follows:</p>
+                    <p>{% for tracking_number in fulfillment.tracking_numbers %} \{{ tracking_number }}<br>{% endfor %}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="content-block">
+                    <p>Click the links below for shipping status on these items:</p>
+                    <p>{% for tracking_url in fulfillment.tracking_urls %} <a href="\{{ tracking_url }}">\{{ tracking_url }}</a><br>{% endfor %}</p>
+                </td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td class="content-block">Please allow some time for the status of the shipment to correctly display at the above address.</td>
+            </tr>
+        {% endif %}
+
+    {% endif %}
+
+    {% if fulfillment_status != 'fulfilled' %}
+    <tr>
+        <td class="content-block">You will receive a confirmation email when more items from your order have been shipped.</td>
+    </tr>
+    {% endif %}
+    <tr>
+        <td class="content-block">Thank you for ordering from \{{ shop_name }}!</td>
+    </tr>
+</table>

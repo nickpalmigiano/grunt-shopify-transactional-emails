@@ -1,0 +1,29 @@
+/* -------------------------------------
+    RESPONSIVE AND MOBILE FRIENDLY STYLES
+------------------------------------- */
+@media only screen and (max-width: $width+40) {
+
+  // Type
+  h1,h2,h3,h4{
+    font-weight:600 !important;
+  }
+  h1{
+    font-size:22px !important;
+  }
+  h2{
+    font-size:18px !important;
+  }
+  h3{
+    font-size:16px !important;
+  }
+
+  .content {
+    padding:0 !important;
+  }
+
+  // Spacing
+  .content-wrap{
+    padding:20px 10px !important;
+  }
+
+}
