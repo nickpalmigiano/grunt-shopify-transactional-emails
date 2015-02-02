@@ -30,7 +30,7 @@ These two templates were not included since they are always sent in plaintext.
 1. default.hbs
 2. branded.hbs
 
-default.hbs is the layout that comes with the original worflow. branded.hbs is slightly different. Here we've moved the header and the footer outside of the individual email templates so you only need to edit the layout once. This allowed us to focus specifically on each email's content in the individual templates.
+default.hbs is the layout that comes with the original workflow. branded.hbs is slightly different. Here we've moved the header and the footer outside of the individual email templates so you only need to edit the layout once. This allowed us to focus specifically on each email's content in the individual templates.
 
 ## How it Works
 
@@ -39,6 +39,23 @@ If you haven't used [Grunt](http://gruntjs.com/) before check out Chris Coyier's
 Make sure you've read the [grunt-email-design](https://github.com/leemunroe/grunt-email-design) getting started guide. This will teach you the Grunt workflow used here.
 
 Once you're familiar with the workflow, you can use these templates (the src folder) to generate all your Shopify Transactional emails easily.
+
+
+## Escaping Liquid Variables
+
+Since both Assemble and Shopify's liquid variables use double brackets for variable declaration we have to escape the liquid variables before we assemble the emails. You'll see that we can do this by prefixing each variable with a backslash. ex: \{{ shop.name }}
+
+
+## Notes
+
+If you get this when running your workflow:
+
+```
+warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+```
+
+Your templates will still render, however the watch task might not work exactly as expected. This is a node limit set to warn against possible recursion and infinite loops. However since we have more than 10 templates we're working with, this error often gets thrown. [You can checkout this fix in premailer](https://github.com/dwightjack/grunt-premailer/blob/master/tasks/premailer.js#L95).
+
 
 ### Resources
 
