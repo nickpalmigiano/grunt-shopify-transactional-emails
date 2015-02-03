@@ -38,12 +38,12 @@ Familiarize yourself with [Grunt](http://gruntjs.com/) before you get started. Y
 
 Make sure you've read the [grunt-email-design](https://github.com/leemunroe/grunt-email-design) getting started guide. This will teach you the Grunt workflow used here.
 
-Once you're familiar with the workflow, you can use these templates (the src folder) to generate all your Shopify Transactional emails easily.
+Once you're familiar with the workflow, you can use these templates (`/src`) to generate all your Shopify Transactional emails easily.
 
 
 ## Escaping Liquid Variables
 
-Since both Assemble and Shopify's liquid variables use double brackets for variable declaration we have to escape the liquid variables before we assemble the emails. You'll see that we can do this by prefixing each variable with a backslash. ex: \{{ shop.name }}
+Since both Assemble and Shopify's liquid variables use double brackets for variable declaration we have to escape the liquid variables before we assemble the emails. You'll see that we can do this by prefixing each variable with a backslash. ex: `\{{ shop.name }}`
 
 
 ## Notes
