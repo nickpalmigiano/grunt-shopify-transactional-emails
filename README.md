@@ -34,7 +34,7 @@ default.hbs is the layout that comes with the original workflow. branded.hbs is 
 
 ## How it Works
 
-If you haven't used [Grunt](http://gruntjs.com/) before check out Chris Coyier's post on [getting started with Grunt](http://24ways.org/2013/grunt-is-not-weird-and-hard/).
+Make sure you familiarize yourself with [Grunt](http://gruntjs.com/) before you get started. You can read Chris Coyier's post on [getting started with Grunt](http://24ways.org/2013/grunt-is-not-weird-and-hard/).
 
 Make sure you've read the [grunt-email-design](https://github.com/leemunroe/grunt-email-design) getting started guide. This will teach you the Grunt workflow used here.
 
